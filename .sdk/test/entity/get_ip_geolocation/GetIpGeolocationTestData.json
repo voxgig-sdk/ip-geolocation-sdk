@@ -1,0 +1,66 @@
+{
+  "existing": {
+    "get_ip_geolocation": {
+      "GET_IP_GEOLOCATION00": {
+        "as": "s78",
+        "asn": "s79",
+        "city_name": "s7a",
+        "country_code": "s7b",
+        "country_name": "s7c",
+        "ip": "s7d",
+        "is_proxy": true,
+        "latitude": 127,
+        "longitude": 128,
+        "region_name": "s81",
+        "time_zone": "s82",
+        "zip_code": "s83"
+      },
+      "GET_IP_GEOLOCATION01": {
+        "as": "sf0",
+        "asn": "sf1",
+        "city_name": "sf2",
+        "country_code": "sf3",
+        "country_name": "sf4",
+        "ip": "sf5",
+        "is_proxy": true,
+        "latitude": 247,
+        "longitude": 248,
+        "region_name": "sf9",
+        "time_zone": "sfa",
+        "zip_code": "sfb"
+      },
+      "GET_IP_GEOLOCATION02": {
+        "as": "s168",
+        "asn": "s169",
+        "city_name": "s16a",
+        "country_code": "s16b",
+        "country_name": "s16c",
+        "ip": "s16d",
+        "is_proxy": true,
+        "latitude": 367,
+        "longitude": 368,
+        "region_name": "s171",
+        "time_zone": "s172",
+        "zip_code": "s173"
+      }
+    }
+  },
+  "new": {
+    "get_ip_geolocation": {
+      "get_ip_geolocation_ref01": {
+        "as": "s1e0",
+        "asn": "s1e1",
+        "city_name": "s1e2",
+        "country_code": "s1e3",
+        "country_name": "s1e4",
+        "ip": "s1e5",
+        "is_proxy": true,
+        "latitude": 487,
+        "longitude": 488,
+        "region_name": "s1e9",
+        "time_zone": "s1ea",
+        "zip_code": "s1eb"
+      }
+    }
+  }
+}

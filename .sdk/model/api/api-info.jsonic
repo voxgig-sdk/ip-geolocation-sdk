@@ -1,0 +1,25 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        name: "IP2Location API Support"
+        url: "https://www.ip2location.io"
+      }
+      description: "The IP2Location API provides a RESTful interface for determining the geographical location of users based on their IP addresses in real time. It supports both IPv4 and IPv6 lookups, returning detailed information such as country, city, and coordinates without requiring an API key for up to 500 queries daily."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://api.ip2location.io"
+        }
+      ]
+      termsOfService: "https://www.ip2location.io"
+      title: "IP Geolocation API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

@@ -1,0 +1,131 @@
+# Entity: get_ip_geolocation
+
+main: kit: entity: get_ip_geolocation: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "as"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "asn"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "city_name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "country_code"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "country_name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "ip"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "is_proxy"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "latitude"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "longitude"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "region_name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "time_zone"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "zip_code"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "get_ip_geolocation"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "json"
+                kind: "query"
+                name: "format"
+                orig: "format"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "8.8.8.8"
+                kind: "query"
+                name: "ip"
+                orig: "ip"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "key"
+                orig: "key"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "lang"
+                orig: "lang"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/"
+          select: {
+            exist: [
+              "format"
+              "ip"
+              "key"
+              "lang"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

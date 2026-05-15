@@ -1,0 +1,67 @@
+<?php
+declare(strict_types=1);
+
+// IpGeolocation SDK utility registration
+
+require_once __DIR__ . '/../core/UtilityType.php';
+require_once __DIR__ . '/Clean.php';
+require_once __DIR__ . '/Done.php';
+require_once __DIR__ . '/MakeError.php';
+require_once __DIR__ . '/FeatureAdd.php';
+require_once __DIR__ . '/FeatureHook.php';
+require_once __DIR__ . '/FeatureInit.php';
+require_once __DIR__ . '/Fetcher.php';
+require_once __DIR__ . '/MakeFetchDef.php';
+require_once __DIR__ . '/MakeContext.php';
+require_once __DIR__ . '/MakeOptions.php';
+require_once __DIR__ . '/MakeRequest.php';
+require_once __DIR__ . '/MakeResponse.php';
+require_once __DIR__ . '/MakeResult.php';
+require_once __DIR__ . '/MakePoint.php';
+require_once __DIR__ . '/MakeSpec.php';
+require_once __DIR__ . '/MakeUrl.php';
+require_once __DIR__ . '/Param.php';
+require_once __DIR__ . '/PrepareAuth.php';
+require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/PrepareHeaders.php';
+require_once __DIR__ . '/PrepareMethod.php';
+require_once __DIR__ . '/PrepareParams.php';
+require_once __DIR__ . '/PreparePath.php';
+require_once __DIR__ . '/PrepareQuery.php';
+require_once __DIR__ . '/ResultBasic.php';
+require_once __DIR__ . '/ResultBody.php';
+require_once __DIR__ . '/ResultHeaders.php';
+require_once __DIR__ . '/TransformRequest.php';
+require_once __DIR__ . '/TransformResponse.php';
+
+IpGeolocationUtility::setRegistrar(function (IpGeolocationUtility $u): void {
+    $u->clean = [IpGeolocationClean::class, 'call'];
+    $u->done = [IpGeolocationDone::class, 'call'];
+    $u->make_error = [IpGeolocationMakeError::class, 'call'];
+    $u->feature_add = [IpGeolocationFeatureAdd::class, 'call'];
+    $u->feature_hook = [IpGeolocationFeatureHook::class, 'call'];
+    $u->feature_init = [IpGeolocationFeatureInit::class, 'call'];
+    $u->fetcher = [IpGeolocationFetcher::class, 'call'];
+    $u->make_fetch_def = [IpGeolocationMakeFetchDef::class, 'call'];
+    $u->make_context = [IpGeolocationMakeContext::class, 'call'];
+    $u->make_options = [IpGeolocationMakeOptions::class, 'call'];
+    $u->make_request = [IpGeolocationMakeRequest::class, 'call'];
+    $u->make_response = [IpGeolocationMakeResponse::class, 'call'];
+    $u->make_result = [IpGeolocationMakeResult::class, 'call'];
+    $u->make_point = [IpGeolocationMakePoint::class, 'call'];
+    $u->make_spec = [IpGeolocationMakeSpec::class, 'call'];
+    $u->make_url = [IpGeolocationMakeUrl::class, 'call'];
+    $u->param = [IpGeolocationParam::class, 'call'];
+    $u->prepare_auth = [IpGeolocationPrepareAuth::class, 'call'];
+    $u->prepare_body = [IpGeolocationPrepareBody::class, 'call'];
+    $u->prepare_headers = [IpGeolocationPrepareHeaders::class, 'call'];
+    $u->prepare_method = [IpGeolocationPrepareMethod::class, 'call'];
+    $u->prepare_params = [IpGeolocationPrepareParams::class, 'call'];
+    $u->prepare_path = [IpGeolocationPreparePath::class, 'call'];
+    $u->prepare_query = [IpGeolocationPrepareQuery::class, 'call'];
+    $u->result_basic = [IpGeolocationResultBasic::class, 'call'];
+    $u->result_body = [IpGeolocationResultBody::class, 'call'];
+    $u->result_headers = [IpGeolocationResultHeaders::class, 'call'];
+    $u->transform_request = [IpGeolocationTransformRequest::class, 'call'];
+    $u->transform_response = [IpGeolocationTransformResponse::class, 'call'];
+});

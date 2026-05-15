@@ -1,0 +1,784 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "IP Geolocation API",
+    "description": "The IP2Location API provides a RESTful interface for determining the geographical location of users based on their IP addresses in real time. It supports both IPv4 and IPv6 lookups, returning detailed information such as country, city, and coordinates without requiring an API key for up to 500 queries daily.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "IP2Location API Support",
+      "url": "https://www.ip2location.io"
+    },
+    "termsOfService": "https://www.ip2location.io"
+  },
+  "servers": [
+    {
+      "url": "https://api.ip2location.io",
+      "description": "Production server"
+    }
+  ],
+  "security": [
+    {
+      "ApiKeyAuth": []
+    },
+    {
+      "BearerAuth": []
+    },
+    {}
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Get IP Geolocation Information",
+        "description": "Retrieve geographical location and related information for a given IP address. Supports both IPv4 and IPv6 addresses. Free tier allows up to 1,000 queries per day without an API key.",
+        "operationId": "getIpGeolocation",
+        "parameters": [
+          {
+            "name": "ip",
+            "in": "query",
+            "description": "IP address (IPv4 or IPv6) for reverse IP location lookup. If not present, the server IP address will be used for the location lookup.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "8.8.8.8"
+            }
+          },
+          {
+            "name": "key",
+            "in": "query",
+            "description": "API key for authentication. Required for more than 1,000 queries per day. Get a free API key to access up to 50,000 queries per month.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Format of the response message. Valid values: json (default) or xml.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "json",
+                "xml"
+              ],
+              "default": "json"
+            }
+          },
+          {
+            "name": "lang",
+            "in": "query",
+            "description": "Translation language for continent, country, region and city name (ISO639-1). Available in Plus and Security plans only.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ar",
+                "cs",
+                "da",
+                "de",
+                "en",
+                "es",
+                "et",
+                "fi",
+                "fr",
+                "ga",
+                "it",
+                "ja",
+                "ko",
+                "ms",
+                "nl",
+                "pt",
+                "ru",
+                "sv",
+                "tr",
+                "vi",
+                "zh-cn",
+                "zh-tw"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with IP geolocation data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/FreePlanResponse"
+                    },
+                    {
+                      "$ref": "#/components/schemas/StarterPlanResponse"
+                    },
+                    {
+                      "$ref": "#/components/schemas/PlusPlanResponse"
+                    },
+                    {
+                      "$ref": "#/components/schemas/SecurityPlanResponse"
+                    }
+                  ]
+                },
+                "examples": {
+                  "freePlan": {
+                    "summary": "Free Plan Response",
+                    "value": {
+                      "ip": "8.8.8.8",
+                      "country_code": "US",
+                      "country_name": "United States of America",
+                      "region_name": "California",
+                      "city_name": "Mountain View",
+                      "latitude": 37.38605,
+                      "longitude": -122.08385,
+                      "zip_code": "94035",
+                      "time_zone": "-07:00",
+                      "asn": "15169",
+                      "as": "Google LLC",
+                      "is_proxy": false
+                    }
+                  },
+                  "starterPlan": {
+                    "summary": "Starter Plan Response",
+                    "value": {
+                      "ip": "8.8.8.8",
+                      "country_code": "US",
+                      "country_name": "United States of America",
+                      "region_name": "California",
+                      "city_name": "Mountain View",
+                      "latitude": 37.38605,
+                      "longitude": -122.08385,
+                      "zip_code": "94035",
+                      "time_zone": "-07:00",
+                      "asn": "15169",
+                      "as": "Google LLC",
+                      "isp": "Google LLC",
+                      "domain": "google.com",
+                      "net_speed": "T1",
+                      "idd_code": "1",
+                      "area_code": "650",
+                      "weather_station_code": "USCA0746",
+                      "weather_station_name": "Mountain View",
+                      "elevation": 32,
+                      "usage_type": "DCH",
+                      "is_proxy": false
+                    }
+                  },
+                  "securityPlan": {
+                    "summary": "Security Plan Response",
+                    "value": {
+                      "ip": "8.8.8.8",
+                      "country_code": "US",
+                      "country_name": "United States of America",
+                      "region_name": "California",
+                      "district": "Santa Clara County",
+                      "city_name": "Mountain View",
+                      "latitude": 37.38605,
+                      "longitude": -122.08385,
+                      "zip_code": "94035",
+                      "time_zone": "-07:00",
+                      "asn": "15169",
+                      "as": "Google LLC",
+                      "as_info": {
+                        "as_number": "15169",
+                        "as_name": "Google LLC",
+                        "as_domain": "google.com",
+                        "as_usage_type": "DCH",
+                        "as_cidr": "8.8.8.0/24"
+                      },
+                      "isp": "Google LLC",
+                      "domain": "google.com",
+                      "net_speed": "T1",
+                      "idd_code": "1",
+                      "area_code": "650",
+                      "weather_station_code": "USCA0746",
+                      "weather_station_name": "Mountain View",
+                      "mcc": "-",
+                      "mnc": "-",
+                      "mobile_brand": "-",
+                      "elevation": 32,
+                      "usage_type": "DCH",
+                      "address_type": "Anycast",
+                      "ads_category": "IAB19-11",
+                      "ads_category_name": "Data Centers",
+                      "is_proxy": false,
+                      "fraud_score": 0,
+                      "proxy": {
+                        "last_seen": 13,
+                        "proxy_type": "DCH",
+                        "threat": "-",
+                        "provider": "-",
+                        "is_vpn": false,
+                        "is_tor": false,
+                        "is_data_center": true,
+                        "is_public_proxy": false,
+                        "is_web_proxy": false,
+                        "is_web_crawler": false,
+                        "is_residential_proxy": false,
+                        "is_consumer_privacy_network": false,
+                        "is_enterprise_private_network": false,
+                        "is_spammer": false,
+                        "is_scanner": false,
+                        "is_botnet": false,
+                        "is_bogon": false
+                      }
+                    }
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "xml": {
+                    "name": "result"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request - Invalid parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Invalid API key",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate Limit Exceeded - Daily limit of 1,000 queries reached",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          },
+          {
+            "BearerAuth": []
+          },
+          {}
+        ]
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "query",
+        "name": "key",
+        "description": "API key as query parameter"
+      },
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "API key as Bearer token in Authorization header"
+      }
+    },
+    "schemas": {
+      "FreePlanResponse": {
+        "type": "object",
+        "properties": {
+          "ip": {
+            "type": "string",
+            "description": "IP address",
+            "example": "8.8.8.8"
+          },
+          "country_code": {
+            "type": "string",
+            "description": "Two-letter country code (ISO 3166-1 alpha-2)",
+            "example": "US"
+          },
+          "country_name": {
+            "type": "string",
+            "description": "Country name",
+            "example": "United States of America"
+          },
+          "region_name": {
+            "type": "string",
+            "description": "Region or state name",
+            "example": "California"
+          },
+          "city_name": {
+            "type": "string",
+            "description": "City name",
+            "example": "Mountain View"
+          },
+          "latitude": {
+            "type": "number",
+            "format": "double",
+            "description": "Latitude coordinate",
+            "example": 37.38605
+          },
+          "longitude": {
+            "type": "number",
+            "format": "double",
+            "description": "Longitude coordinate",
+            "example": -122.08385
+          },
+          "zip_code": {
+            "type": "string",
+            "description": "ZIP or postal code",
+            "example": "94035"
+          },
+          "time_zone": {
+            "type": "string",
+            "description": "Time zone offset",
+            "example": "-07:00"
+          },
+          "asn": {
+            "type": "string",
+            "description": "Autonomous System Number",
+            "example": "15169"
+          },
+          "as": {
+            "type": "string",
+            "description": "Autonomous System name",
+            "example": "Google LLC"
+          },
+          "is_proxy": {
+            "type": "boolean",
+            "description": "Whether the IP is a proxy",
+            "example": false
+          }
+        }
+      },
+      "StarterPlanResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/FreePlanResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "isp": {
+                "type": "string",
+                "description": "Internet Service Provider name",
+                "example": "Google LLC"
+              },
+              "domain": {
+                "type": "string",
+                "description": "Domain name",
+                "example": "google.com"
+              },
+              "net_speed": {
+                "type": "string",
+                "description": "Network speed type",
+                "example": "T1"
+              },
+              "idd_code": {
+                "type": "string",
+                "description": "International Direct Dialing code",
+                "example": "1"
+              },
+              "area_code": {
+                "type": "string",
+                "description": "Area code",
+                "example": "650"
+              },
+              "weather_station_code": {
+                "type": "string",
+                "description": "Weather station code",
+                "example": "USCA0746"
+              },
+              "weather_station_name": {
+                "type": "string",
+                "description": "Weather station name",
+                "example": "Mountain View"
+              },
+              "elevation": {
+                "type": "integer",
+                "description": "Elevation in meters",
+                "example": 32
+              },
+              "usage_type": {
+                "type": "string",
+                "description": "Usage type of the IP address",
+                "example": "DCH"
+              }
+            }
+          }
+        ]
+      },
+      "PlusPlanResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/StarterPlanResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "mcc": {
+                "type": "string",
+                "description": "Mobile Country Code",
+                "example": "-"
+              },
+              "mnc": {
+                "type": "string",
+                "description": "Mobile Network Code",
+                "example": "-"
+              },
+              "mobile_brand": {
+                "type": "string",
+                "description": "Mobile brand name",
+                "example": "-"
+              },
+              "address_type": {
+                "type": "string",
+                "description": "Address type",
+                "example": "Anycast"
+              },
+              "continent": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "North America"
+                  },
+                  "code": {
+                    "type": "string",
+                    "example": "NA"
+                  },
+                  "hemisphere": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "example": [
+                      "north",
+                      "west"
+                    ]
+                  },
+                  "translation": {
+                    "type": "object",
+                    "properties": {
+                      "lang": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "value": {
+                        "type": "string",
+                        "nullable": true
+                      }
+                    }
+                  }
+                }
+              },
+              "country": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "alpha3_code": {
+                    "type": "string"
+                  },
+                  "numeric_code": {
+                    "type": "integer"
+                  },
+                  "demonym": {
+                    "type": "string"
+                  },
+                  "flag": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "capital": {
+                    "type": "string"
+                  },
+                  "total_area": {
+                    "type": "integer"
+                  },
+                  "population": {
+                    "type": "integer"
+                  },
+                  "currency": {
+                    "type": "object",
+                    "properties": {
+                      "code": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "symbol": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "language": {
+                    "type": "object",
+                    "properties": {
+                      "code": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "tld": {
+                    "type": "string"
+                  },
+                  "translation": {
+                    "type": "object",
+                    "properties": {
+                      "lang": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "value": {
+                        "type": "string",
+                        "nullable": true
+                      }
+                    }
+                  }
+                }
+              },
+              "region": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "code": {
+                    "type": "string"
+                  },
+                  "translation": {
+                    "type": "object",
+                    "properties": {
+                      "lang": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "value": {
+                        "type": "string",
+                        "nullable": true
+                      }
+                    }
+                  }
+                }
+              },
+              "city": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "translation": {
+                    "type": "object",
+                    "properties": {
+                      "lang": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "value": {
+                        "type": "string",
+                        "nullable": true
+                      }
+                    }
+                  }
+                }
+              },
+              "time_zone_info": {
+                "type": "object",
+                "properties": {
+                  "olson": {
+                    "type": "string"
+                  },
+                  "current_time": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "gmt_offset": {
+                    "type": "integer"
+                  },
+                  "is_dst": {
+                    "type": "boolean"
+                  },
+                  "abbreviation": {
+                    "type": "string"
+                  },
+                  "dst_start_date": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "dst_end_date": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "sunrise": {
+                    "type": "string"
+                  },
+                  "sunset": {
+                    "type": "string"
+                  }
+                }
+              },
+              "geotargeting": {
+                "type": "object",
+                "properties": {
+                  "metro": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "SecurityPlanResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/PlusPlanResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "district": {
+                "type": "string",
+                "description": "District or county name",
+                "example": "Santa Clara County"
+              },
+              "as_info": {
+                "type": "object",
+                "properties": {
+                  "as_number": {
+                    "type": "string"
+                  },
+                  "as_name": {
+                    "type": "string"
+                  },
+                  "as_domain": {
+                    "type": "string"
+                  },
+                  "as_usage_type": {
+                    "type": "string"
+                  },
+                  "as_cidr": {
+                    "type": "string"
+                  }
+                }
+              },
+              "ads_category": {
+                "type": "string",
+                "description": "IAB category code"
+              },
+              "ads_category_name": {
+                "type": "string",
+                "description": "IAB category name"
+              },
+              "fraud_score": {
+                "type": "integer",
+                "description": "Fraud score (0-100)"
+              },
+              "proxy": {
+                "type": "object",
+                "properties": {
+                  "last_seen": {
+                    "type": "integer",
+                    "description": "Days since last seen as proxy"
+                  },
+                  "proxy_type": {
+                    "type": "string"
+                  },
+                  "threat": {
+                    "type": "string"
+                  },
+                  "provider": {
+                    "type": "string"
+                  },
+                  "is_vpn": {
+                    "type": "boolean"
+                  },
+                  "is_tor": {
+                    "type": "boolean"
+                  },
+                  "is_data_center": {
+                    "type": "boolean"
+                  },
+                  "is_public_proxy": {
+                    "type": "boolean"
+                  },
+                  "is_web_proxy": {
+                    "type": "boolean"
+                  },
+                  "is_web_crawler": {
+                    "type": "boolean"
+                  },
+                  "is_residential_proxy": {
+                    "type": "boolean"
+                  },
+                  "is_consumer_privacy_network": {
+                    "type": "boolean"
+                  },
+                  "is_enterprise_private_network": {
+                    "type": "boolean"
+                  },
+                  "is_spammer": {
+                    "type": "boolean"
+                  },
+                  "is_scanner": {
+                    "type": "boolean"
+                  },
+                  "is_botnet": {
+                    "type": "boolean"
+                  },
+                  "is_bogon": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "error_code": {
+                "type": "integer",
+                "description": "Error code"
+              },
+              "error_message": {
+                "type": "string",
+                "description": "Error message describing what went wrong"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
