@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/ip-geolocation-sdk/core"
+import "github.com/voxgig-sdk/ip-geolocation-sdk/go/core"
 
 func doneUtil(ctx *core.Context) (any, error) {
 	if ctx.Ctrl.Explain != nil {

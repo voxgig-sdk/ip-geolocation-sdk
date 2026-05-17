@@ -13,7 +13,8 @@
         "longitude": 128,
         "region_name": "s81",
         "time_zone": "s82",
-        "zip_code": "s83"
+        "zip_code": "s83",
+        "id": "GET_IP_GEOLOCATION00"
       },
       "GET_IP_GEOLOCATION01": {
         "as": "sf0",
@@ -27,7 +28,8 @@
         "longitude": 248,
         "region_name": "sf9",
         "time_zone": "sfa",
-        "zip_code": "sfb"
+        "zip_code": "sfb",
+        "id": "GET_IP_GEOLOCATION01"
       },
       "GET_IP_GEOLOCATION02": {
         "as": "s168",
@@ -41,7 +43,8 @@
         "longitude": 368,
         "region_name": "s171",
         "time_zone": "s172",
-        "zip_code": "s173"
+        "zip_code": "s173",
+        "id": "GET_IP_GEOLOCATION02"
       }
     }
   },

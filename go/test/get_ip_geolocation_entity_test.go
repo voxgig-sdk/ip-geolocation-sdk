@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/ip-geolocation-sdk"
-	"github.com/voxgig-sdk/ip-geolocation-sdk/core"
+	sdk "github.com/voxgig-sdk/ip-geolocation-sdk/go"
+	"github.com/voxgig-sdk/ip-geolocation-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/ip-geolocation-sdk/go/utility/struct"
 )
 
 func TestGetIpGeolocationEntity(t *testing.T) {

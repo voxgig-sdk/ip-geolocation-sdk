@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/ip-geolocation-sdk"
-	"github.com/voxgig-sdk/ip-geolocation-sdk/core"
+	sdk "github.com/voxgig-sdk/ip-geolocation-sdk/go"
+	"github.com/voxgig-sdk/ip-geolocation-sdk/go/core"
 )
 
 func TestGetIpGeolocationDirect(t *testing.T) {

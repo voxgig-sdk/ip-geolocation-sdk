@@ -1,10 +1,10 @@
 package voxgigipgeolocationsdk
 
 import (
-	"github.com/voxgig-sdk/ip-geolocation-sdk/core"
-	"github.com/voxgig-sdk/ip-geolocation-sdk/entity"
-	"github.com/voxgig-sdk/ip-geolocation-sdk/feature"
-	_ "github.com/voxgig-sdk/ip-geolocation-sdk/utility"
+	"github.com/voxgig-sdk/ip-geolocation-sdk/go/core"
+	"github.com/voxgig-sdk/ip-geolocation-sdk/go/entity"
+	"github.com/voxgig-sdk/ip-geolocation-sdk/go/feature"
+	_ "github.com/voxgig-sdk/ip-geolocation-sdk/go/utility"
 )
 
 // Type aliases preserve external API.
