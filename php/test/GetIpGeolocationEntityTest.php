@@ -85,7 +85,6 @@ function get_ip_geolocation_basic_setup($extra)
         "IPGEOLOCATION_TEST_GET_IP_GEOLOCATION_ENTID" => $idmap,
         "IPGEOLOCATION_TEST_LIVE" => "FALSE",
         "IPGEOLOCATION_TEST_EXPLAIN" => "FALSE",
-        "IPGEOLOCATION_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +96,6 @@ function get_ip_geolocation_basic_setup($extra)
     if ($env["IPGEOLOCATION_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["IPGEOLOCATION_APIKEY"],
             ],
             $extra ?? [],
         ]);

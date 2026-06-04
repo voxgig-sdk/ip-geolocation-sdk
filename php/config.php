@@ -20,9 +20,6 @@ class IpGeolocationConfig
             ],
             "options" => [
                 "base" => "https://api.ip2location.io",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],

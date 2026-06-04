@@ -17,9 +17,7 @@ loading a specific record.
 ```ts
 import { IpGeolocationSDK } from 'ip-geolocation'
 
-const client = new IpGeolocationSDK({
-  apikey: process.env.IP-GEOLOCATION_APIKEY,
-})
+const client = new IpGeolocationSDK({})
 ```
 
 ### 3. Load a getipgeolocation
@@ -82,7 +80,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new IpGeolocationSDK({ apikey: '...' })
+const client = new IpGeolocationSDK()
 const testClient = client.tester()
 ```
 
@@ -118,7 +116,6 @@ const logger = {
 }
 
 const client = new IpGeolocationSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -129,7 +126,6 @@ Create a `.env.local` file at the project root:
 
 ```
 IP-GEOLOCATION_TEST_LIVE=TRUE
-IP-GEOLOCATION_APIKEY=<your-key>
 ```
 
 Then run:
@@ -147,7 +143,6 @@ cd ts && npm test
 
 ```ts
 new IpGeolocationSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -158,7 +153,6 @@ new IpGeolocationSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
