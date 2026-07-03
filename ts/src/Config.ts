@@ -38,6 +38,10 @@ class Config {
   options = {
     base: 'https://api.ip2location.io',
 
+    auth: {
+      prefix: 'Bearer',
+    },
+
     headers: {
       "content-type": "application/json"
     },
@@ -55,136 +59,139 @@ class Config {
     "get_ip_geolocation": {
       "fields": [
         {
+          "active": true,
           "name": "as",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 0
         },
         {
+          "active": true,
           "name": "asn",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 1
         },
         {
+          "active": true,
           "name": "city_name",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 2
         },
         {
+          "active": true,
           "name": "country_code",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 3
         },
         {
+          "active": true,
           "name": "country_name",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 4
         },
         {
+          "active": true,
           "name": "ip",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 5
         },
         {
+          "active": true,
           "name": "is_proxy",
           "req": false,
           "type": "`$BOOLEAN`",
-          "active": true,
           "index$": 6
         },
         {
+          "active": true,
           "name": "latitude",
           "req": false,
           "type": "`$NUMBER`",
-          "active": true,
           "index$": 7
         },
         {
+          "active": true,
           "name": "longitude",
           "req": false,
           "type": "`$NUMBER`",
-          "active": true,
           "index$": 8
         },
         {
+          "active": true,
           "name": "region_name",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 9
         },
         {
+          "active": true,
           "name": "time_zone",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 10
         },
         {
+          "active": true,
           "name": "zip_code",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 11
         }
       ],
       "name": "get_ip_geolocation",
       "op": {
         "load": {
+          "input": "data",
           "name": "load",
           "points": [
             {
+              "active": true,
               "args": {
                 "query": [
                   {
+                    "active": true,
                     "example": "json",
                     "kind": "query",
                     "name": "format",
                     "orig": "format",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   },
                   {
+                    "active": true,
                     "example": "8.8.8.8",
                     "kind": "query",
                     "name": "ip",
                     "orig": "ip",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "key",
                     "orig": "key",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "lang",
                     "orig": "lang",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   }
                 ]
               },
               "method": "GET",
               "orig": "/",
+              "parts": [],
               "select": {
                 "exist": [
                   "format",
@@ -197,12 +204,9 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
-              "parts": [],
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "load"
         }
       },

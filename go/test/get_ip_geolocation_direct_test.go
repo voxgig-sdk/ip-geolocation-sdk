@@ -99,12 +99,14 @@ func get_ip_geolocationDirectSetup(mockres any) *get_ip_geolocationDirectSetupRe
 	env := envOverride(map[string]any{
 		"IPGEOLOCATION_TEST_GET_IP_GEOLOCATION_ENTID": map[string]any{},
 		"IPGEOLOCATION_TEST_LIVE":    "FALSE",
+		"IPGEOLOCATION_APIKEY":       "NONE",
 	})
 
 	live := env["IPGEOLOCATION_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["IPGEOLOCATION_APIKEY"],
 		}
 		client := sdk.NewIpGeolocationSDK(mergedOpts)
 

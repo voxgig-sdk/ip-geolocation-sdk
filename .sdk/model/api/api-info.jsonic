@@ -18,26 +18,7 @@ main: {
       termsOfService: "https://www.ip2location.io"
       title: "IP Geolocation API"
       version: "1.0.0"
-      tagline: "Resolve IPv4 and IPv6 addresses to country, region, city, coordinates, and network info"
-      homepage: "https://www.ip2location.io"
-      docs_url: "https://www.ip2location.io/ip2location-documentation"
-      license_short: "Proprietary service; free keyless tier with daily query cap, paid plans for higher volume."
-      license_md: `- Operated by [IP2Location.io](https://www.ip2location.io) under its [Terms of Service](https://www.ip2location.io/terms-of-service).
-- Keyless access is rate-limited; higher tiers require account signup and an API key.
-- Check the IP2Location terms before redistributing or caching geolocation results.`
-      about_md: `[IP2Location.io](https://www.ip2location.io) is a geolocation lookup service that maps an IPv4 or IPv6 address to location and network attributes. The public REST endpoint at \`https://api.ip2location.io/\` can be queried without credentials for light usage, with paid plans unlocking richer fields and higher quotas.
-
-What you get from a lookup:
-
-- Location: country code and name, region, city, ZIP code, latitude/longitude, and time zone.
-- Network: ASN, AS name, and (on higher plans) ISP, domain, net speed, and usage type.
-- Optional fields on paid plans: mobile carrier (MCC/MNC), proxy/fraud detection, currency, and language.
-
-Operational notes: keyless callers are capped at roughly 500-1,000 queries per day (resetting at 00:00 UTC); authenticated calls accept the key either as a \`key\` query parameter or as a \`Bearer\` token in the \`Authorization\` header. The service returns JSON by default and also supports XML and a \`lang\` parameter for localized country/region names. CORS is disabled on the public endpoint.`
-      entity_desc: {
-        get_ip_geolocation: "Looks up the geolocation and network metadata for an IPv4 or IPv6 address via `GET /?ip={ip}` on `api.ip2location.io`, optionally accepting `key`, `format`, and `lang` query parameters."
-      }
-      auth: false
     }
   }
 }
+

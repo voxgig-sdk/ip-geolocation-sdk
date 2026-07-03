@@ -1,20 +1,8 @@
 # IpGeolocation SDK
 
-Resolve IPv4 and IPv6 addresses to country, region, city, coordinates, and network info
+IP Geolocation API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About IP Geolocation API
-
-[IP2Location.io](https://www.ip2location.io) is a geolocation lookup service that maps an IPv4 or IPv6 address to location and network attributes. The public REST endpoint at `https://api.ip2location.io/` can be queried without credentials for light usage, with paid plans unlocking richer fields and higher quotas.
-
-What you get from a lookup:
-
-- Location: country code and name, region, city, ZIP code, latitude/longitude, and time zone.
-- Network: ASN, AS name, and (on higher plans) ISP, domain, net speed, and usage type.
-- Optional fields on paid plans: mobile carrier (MCC/MNC), proxy/fraud detection, currency, and language.
-
-Operational notes: keyless callers are capped at roughly 500-1,000 queries per day (resetting at 00:00 UTC); authenticated calls accept the key either as a `key` query parameter or as a `Bearer` token in the `Authorization` header. The service returns JSON by default and also supports XML and a `lang` parameter for localized country/region names. CORS is disabled on the public endpoint.
 
 ## Try it
 
@@ -48,27 +36,31 @@ gem install ip-geolocation-sdk
 luarocks install ip-geolocation-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { IpGeolocationSDK } from 'ip-geolocation'
 
-const client = new IpGeolocationSDK({})
+const client = new IpGeolocationSDK({
+  apikey: process.env.IP-GEOLOCATION_APIKEY,
+})
 
+// Load getipgeolocation data
+const getipgeolocation = await client.GetIpGeolocation().load({})
+console.log(getipgeolocation.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -98,7 +90,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **GetIpGeolocation** | Looks up the geolocation and network metadata for an IPv4 or IPv6 address via `GET /?ip={ip}` on `api.ip2location.io`, optionally accepting `key`, `format`, and `lang` query parameters. | `/` |
+| **GetIpGeolocation** |  | `/` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -108,15 +100,17 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from ipgeolocation_sdk import IpGeolocationSDK
 
-client = IpGeolocationSDK({})
+client = IpGeolocationSDK({
+    "apikey": os.environ.get("IP-GEOLOCATION_APIKEY"),
+})
 
 
 # Load a specific getipgeolocation
-getipgeolocation, err = client.GetIpGeolocation(None).load(
-    {"id": "example_id"}, None
-)
+getipgeolocation, err = client.GetIpGeolocation().load({"id": "example_id"})
+print(getipgeolocation)
 ```
 
 ### PHP
@@ -125,13 +119,14 @@ getipgeolocation, err = client.GetIpGeolocation(None).load(
 <?php
 require_once 'ipgeolocation_sdk.php';
 
-$client = new IpGeolocationSDK([]);
+$client = new IpGeolocationSDK([
+    "apikey" => getenv("IP-GEOLOCATION_APIKEY"),
+]);
 
 
 // Load a specific getipgeolocation
-[$getipgeolocation, $err] = $client->GetIpGeolocation(null)->load(
-    ["id" => "example_id"], null
-);
+[$getipgeolocation, $err] = $client->GetIpGeolocation()->load(["id" => "example_id"]);
+print_r($getipgeolocation);
 ```
 
 ### Golang
@@ -139,8 +134,13 @@ $client = new IpGeolocationSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/ip-geolocation-sdk/go"
 
-client := sdk.NewIpGeolocationSDK(map[string]any{})
+client := sdk.NewIpGeolocationSDK(map[string]any{
+    "apikey": os.Getenv("IP-GEOLOCATION_APIKEY"),
+})
 
+// Load getipgeolocation data
+getipgeolocation, err := client.GetIpGeolocation(nil).Load(map[string]any{}, nil)
+fmt.Println(getipgeolocation)
 ```
 
 ### Ruby
@@ -148,13 +148,14 @@ client := sdk.NewIpGeolocationSDK(map[string]any{})
 ```ruby
 require_relative "IpGeolocation_sdk"
 
-client = IpGeolocationSDK.new({})
+client = IpGeolocationSDK.new({
+  "apikey" => ENV["IP-GEOLOCATION_APIKEY"],
+})
 
 
 # Load a specific getipgeolocation
-getipgeolocation, err = client.GetIpGeolocation(nil).load(
-  { "id" => "example_id" }, nil
-)
+getipgeolocation, err = client.GetIpGeolocation().load({ "id" => "example_id" })
+puts getipgeolocation
 ```
 
 ### Lua
@@ -162,13 +163,14 @@ getipgeolocation, err = client.GetIpGeolocation(nil).load(
 ```lua
 local sdk = require("ip-geolocation_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("IP-GEOLOCATION_APIKEY"),
+})
 
 
 -- Load a specific getipgeolocation
-local getipgeolocation, err = client:GetIpGeolocation(nil):load(
-  { id = "example_id" }, nil
-)
+local getipgeolocation, err = client:GetIpGeolocation():load({ id = "example_id" })
+print(getipgeolocation)
 ```
 
 ## Unit testing in offline mode
@@ -187,25 +189,21 @@ const result = await client.GetIpGeolocation().load({ id: 'test01' })
 ### Python
 
 ```python
-client = IpGeolocationSDK.test(None, None)
-result, err = client.GetIpGeolocation(None).load(
-    {"id": "test01"}, None
-)
+client = IpGeolocationSDK.test()
+result, err = client.GetIpGeolocation().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = IpGeolocationSDK::test(null, null);
-[$result, $err] = $client->GetIpGeolocation(null)->load(
-    ["id" => "test01"], null
-);
+$client = IpGeolocationSDK::test();
+[$result, $err] = $client->GetIpGeolocation()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.GetIpGeolocation(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -214,19 +212,15 @@ result, err := client.GetIpGeolocation(nil).Load(
 ### Ruby
 
 ```ruby
-client = IpGeolocationSDK.test(nil, nil)
-result, err = client.GetIpGeolocation(nil).load(
-  { "id" => "test01" }, nil
-)
+client = IpGeolocationSDK.test
+result, err = client.GetIpGeolocation().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:GetIpGeolocation(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:GetIpGeolocation():load({ id = "test01" })
 ```
 
 ## How it works
@@ -330,15 +324,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the IP Geolocation API
-
-- Upstream: [https://www.ip2location.io](https://www.ip2location.io)
-- API docs: [https://www.ip2location.io/ip2location-documentation](https://www.ip2location.io/ip2location-documentation)
-
-- Operated by [IP2Location.io](https://www.ip2location.io) under its [Terms of Service](https://www.ip2location.io/terms-of-service).
-- Keyless access is rate-limited; higher tiers require account signup and an API key.
-- Check the IP2Location terms before redistributing or caching geolocation results.
 
 ---
 

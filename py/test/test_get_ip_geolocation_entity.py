@@ -91,6 +91,7 @@ def _get_ip_geolocation_basic_setup(extra):
         "IPGEOLOCATION_TEST_GET_IP_GEOLOCATION_ENTID": idmap,
         "IPGEOLOCATION_TEST_LIVE": "FALSE",
         "IPGEOLOCATION_TEST_EXPLAIN": "FALSE",
+        "IPGEOLOCATION_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -101,6 +102,7 @@ def _get_ip_geolocation_basic_setup(extra):
     if env.get("IPGEOLOCATION_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("IPGEOLOCATION_APIKEY"),
             },
             extra or {},
         ])

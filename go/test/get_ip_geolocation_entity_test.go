@@ -117,6 +117,7 @@ func get_ip_geolocationBasicSetup(extra map[string]any) *entityTestSetup {
 		"IPGEOLOCATION_TEST_GET_IP_GEOLOCATION_ENTID": idmap,
 		"IPGEOLOCATION_TEST_LIVE":      "FALSE",
 		"IPGEOLOCATION_TEST_EXPLAIN":   "FALSE",
+		"IPGEOLOCATION_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["IPGEOLOCATION_TEST_GET_IP_GEOLOCATION_ENTID"])
@@ -127,6 +128,7 @@ func get_ip_geolocationBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["IPGEOLOCATION_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["IPGEOLOCATION_APIKEY"],
 			},
 			extra,
 		})
