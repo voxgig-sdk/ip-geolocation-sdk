@@ -10,7 +10,7 @@ The Lua SDK for the IpGeolocation API — an entity-oriented client using Lua co
 
 ## Install
 ```bash
-luarocks install ip-geolocation-sdk
+luarocks install voxgig-sdk-ip-geolocation
 ```
 
 If the module is not yet published, add the source directory to

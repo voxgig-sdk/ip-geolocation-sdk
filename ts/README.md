@@ -10,7 +10,7 @@ The TypeScript SDK for the IpGeolocation API — a type-safe, entity-oriented cl
 
 ## Install
 ```bash
-npm install ip-geolocation
+npm install @voxgig-sdk/ip-geolocation
 ```
 ## Tutorial: your first API call
 

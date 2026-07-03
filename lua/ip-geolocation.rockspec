@@ -8,12 +8,14 @@ source = {
   dir = "ip-geolocation-sdk/lua"
 }
 description = {
-  summary = "IpGeolocation SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the IP Geolocation public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/ip-geolocation-sdk",
+  issues_url = "https://github.com/voxgig-sdk/ip-geolocation-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "ip-geolocation" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {
