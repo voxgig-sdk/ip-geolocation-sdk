@@ -233,10 +233,10 @@ class IpGeolocationSDK
 
     private $_get_ip_geolocation = null;
 
-    // Idiomatic facade: $client->get_ip_geolocation()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias GetIpGeolocation() (PHP method
-    // names are case-insensitive).
-    public function get_ip_geolocation($data = null)
+    // Canonical facade: $client->GetIpGeolocation()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->get_ip_geolocation()
+    // resolves here too.
+    public function GetIpGeolocation($data = null)
     {
         require_once __DIR__ . '/entity/get_ip_geolocation_entity.php';
         if ($data === null) {

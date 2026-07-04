@@ -204,14 +204,7 @@ class IpGeolocationSDK {
 
 
 
-  _get_ip_geolocation?: GetIpGeolocationEntity
-
-  // Idiomatic facade: `client.get_ip_geolocation.list()` / `client.get_ip_geolocation.load({ id })`.
-  get get_ip_geolocation(): GetIpGeolocationEntity {
-    return (this._get_ip_geolocation ??= new GetIpGeolocationEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.get_ip_geolocation` instead. */
+  // Entity access: `client.GetIpGeolocation().list()` / `client.GetIpGeolocation().load({ id })`.
   GetIpGeolocation(data?: any) {
     const self = this
     return new GetIpGeolocationEntity(self,data)

@@ -34,8 +34,9 @@ client = IpGeolocationSDK.new({
 
 ```ruby
 begin
-  result = client.getipgeolocation.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare GetIpGeolocation record (raises on error).
+  getipgeolocation = client.GetIpGeolocation.load({ "id" => "example_id" })
+  puts getipgeolocation
 rescue => err
   warn "load failed: #{err}"
 end
@@ -82,13 +83,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = IpGeolocationSDK.test
+client = IpGeolocationSDK.test({
+  "entity" => { "getipgeolocation" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.getipgeolocation.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+getipgeolocation = client.GetIpGeolocation.load({ "id" => "test01" })
+puts getipgeolocation
 ```
 
 ### Use a custom fetch function
@@ -233,7 +238,7 @@ API path: `/`
 
 ### GetIpGeolocation
 
-Create an instance: `const get_ip_geolocation = client.get_ip_geolocation`
+Create an instance: `get_ip_geolocation = client.GetIpGeolocation`
 
 #### Operations
 
@@ -260,8 +265,9 @@ Create an instance: `const get_ip_geolocation = client.get_ip_geolocation`
 
 #### Example: Load
 
-```ts
-const get_ip_geolocation = await client.get_ip_geolocation.load({ id: 'get_ip_geolocation_id' })
+```ruby
+# load returns the bare GetIpGeolocation record (raises on error).
+get_ip_geolocation = client.GetIpGeolocation.load({ "id" => "get_ip_geolocation_id" })
 ```
 
 
@@ -336,7 +342,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-getipgeolocation = client.getipgeolocation
+getipgeolocation = client.GetIpGeolocation
 getipgeolocation.load({ "id" => "example_id" })
 
 # getipgeolocation.data_get now returns the loaded getipgeolocation data

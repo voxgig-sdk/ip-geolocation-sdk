@@ -220,25 +220,15 @@ class IpGeolocationSDK:
         }
 
 
-    @property
-    def get_ip_geolocation(self):
-        """Idiomatic facade: client.get_ip_geolocation.list() / client.get_ip_geolocation.load({"id": ...})."""
-        from entity.get_ip_geolocation_entity import GetIpGeolocationEntity
-        cached = getattr(self, "_get_ip_geolocation", None)
-        if cached is None:
-            cached = GetIpGeolocationEntity(self, None)
-            self._get_ip_geolocation = cached
-        return cached
-
-    def GetIpGeolocation(self, data=None):
-        # Deprecated: use client.get_ip_geolocation instead.
+    def GetIpGeolocation(self, data=None) -> "GetIpGeolocationEntity":
+        """Entity factory: client.GetIpGeolocation().list({}) / client.GetIpGeolocation().load({"id": ...})."""
         from entity.get_ip_geolocation_entity import GetIpGeolocationEntity
         return GetIpGeolocationEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "IpGeolocationSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -258,3 +248,9 @@ class IpGeolocationSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.get_ip_geolocation_entity import GetIpGeolocationEntity

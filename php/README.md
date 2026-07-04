@@ -35,9 +35,10 @@ $client = new IpGeolocationSDK([
 
 ```php
 try {
-    $result = $client->getipgeolocation()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare GetIpGeolocation record (throws on error).
+    $getipgeolocation = $client->GetIpGeolocation()->load(["id" => "example_id"]);
+    print_r($getipgeolocation);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -83,13 +84,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = IpGeolocationSDK::test();
+$client = IpGeolocationSDK::test([
+    "entity" => ["getipgeolocation" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->getipgeolocation()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$getipgeolocation = $client->GetIpGeolocation()->load(["id" => "test01"]);
+print_r($getipgeolocation);
 ```
 
 ### Use a custom fetch function
@@ -238,7 +243,7 @@ API path: `/`
 
 ### GetIpGeolocation
 
-Create an instance: `const get_ip_geolocation = client.get_ip_geolocation`
+Create an instance: `$get_ip_geolocation = $client->GetIpGeolocation();`
 
 #### Operations
 
@@ -265,8 +270,9 @@ Create an instance: `const get_ip_geolocation = client.get_ip_geolocation`
 
 #### Example: Load
 
-```ts
-const get_ip_geolocation = await client.get_ip_geolocation.load({ id: 'get_ip_geolocation_id' })
+```php
+// load() returns the bare GetIpGeolocation record (throws on error).
+$get_ip_geolocation = $client->GetIpGeolocation()->load(["id" => "get_ip_geolocation_id"]);
 ```
 
 
@@ -341,7 +347,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$getipgeolocation = $client->getipgeolocation();
+$getipgeolocation = $client->GetIpGeolocation();
 $getipgeolocation->load(["id" => "example_id"]);
 
 // $getipgeolocation->dataGet() now returns the loaded getipgeolocation data

@@ -86,7 +86,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## GetIpGeolocationEntity
 
 ```php
-$get_ip_geolocation = $client->get_ip_geolocation();
+$get_ip_geolocation = $client->GetIpGeolocation();
 ```
 
 ### Fields
@@ -113,7 +113,7 @@ $get_ip_geolocation = $client->get_ip_geolocation();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->get_ip_geolocation()->load(["id" => "get_ip_geolocation_id"]);
+$result = $client->GetIpGeolocation()->load(["id" => "get_ip_geolocation_id"]);
 ```
 
 ### Common Methods

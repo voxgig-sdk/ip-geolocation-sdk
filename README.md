@@ -28,9 +28,9 @@ const client = new IpGeolocationSDK({
   apikey: process.env.IP_GEOLOCATION_APIKEY,
 })
 
-// Load getipgeolocation data
-const getipgeolocation = await client.getipgeolocation.load({})
-console.log(getipgeolocation.data)
+// Load getipgeolocation data (returns a GetIpGeolocation)
+const getipgeolocation = await client.GetIpGeolocation().load()
+console.log(getipgeolocation)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -89,8 +89,8 @@ client = IpGeolocationSDK({
 })
 
 
-# Load a specific getipgeolocation
-getipgeolocation = client.getipgeolocation.load({"id": "example_id"})
+# Load a specific getipgeolocation (returns the record, raises on error)
+getipgeolocation = client.GetIpGeolocation().load({"id": "example_id"})
 print(getipgeolocation)
 ```
 
@@ -105,8 +105,8 @@ $client = new IpGeolocationSDK([
 ]);
 
 
-// Load a specific getipgeolocation
-$getipgeolocation = $client->getipgeolocation()->load(["id" => "example_id"]);
+// Load a specific getipgeolocation (returns the bare record; throws on error)
+$getipgeolocation = $client->GetIpGeolocation()->load(["id" => "example_id"]);
 print_r($getipgeolocation);
 ```
 
@@ -134,8 +134,8 @@ client = IpGeolocationSDK.new({
 })
 
 
-# Load a specific getipgeolocation
-getipgeolocation = client.getipgeolocation.load({ "id" => "example_id" })
+# Load a specific getipgeolocation (returns the bare record; raises on error)
+getipgeolocation = client.GetIpGeolocation.load({ "id" => "example_id" })
 puts getipgeolocation
 ```
 
@@ -150,7 +150,7 @@ local client = sdk.new({
 
 
 -- Load a specific getipgeolocation
-local getipgeolocation, err = client:getipgeolocation():load({ id = "example_id" })
+local getipgeolocation, err = client:GetIpGeolocation():load({ id = "example_id" })
 print(getipgeolocation)
 ```
 
@@ -163,22 +163,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = IpGeolocationSDK.test()
-const result = await client.getipgeolocation.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const getipgeolocation = await client.GetIpGeolocation().load({ id: 'test01' })
+// getipgeolocation is a bare GetIpGeolocation populated with mock data
+console.log(getipgeolocation)
 ```
 
 ### Python
 
 ```python
 client = IpGeolocationSDK.test()
-result = client.getipgeolocation.load({"id": "test01"})
+getipgeolocation = client.GetIpGeolocation().load({"id": "test01"})
+print(getipgeolocation)
 ```
 
 ### PHP
 
 ```php
-$client = IpGeolocationSDK::test();
-$result = $client->getipgeolocation()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = IpGeolocationSDK::test([
+    "entity" => ["getipgeolocation" => ["test01" => ["id" => "test01"]]],
+]);
+$getipgeolocation = $client->GetIpGeolocation()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -193,15 +198,18 @@ result, err := client.GetIpGeolocation(nil).Load(
 ### Ruby
 
 ```ruby
-client = IpGeolocationSDK.test
-result = client.getipgeolocation.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = IpGeolocationSDK.test({
+  "entity" => { "getipgeolocation" => { "test01" => { "id" => "test01" } } },
+})
+getipgeolocation = client.GetIpGeolocation.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:getipgeolocation():load({ id = "test01" })
+local result, err = client:GetIpGeolocation():load({ id = "test01" })
 ```
 
 ## How it works
@@ -249,6 +257,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

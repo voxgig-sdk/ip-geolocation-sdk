@@ -208,13 +208,7 @@ class IpGeolocationSDK
   end
 
 
-  # Idiomatic facade: client.get_ip_geolocation.list / client.get_ip_geolocation.load({ "id" => ... })
-  def get_ip_geolocation
-    require_relative 'entity/get_ip_geolocation_entity'
-    @get_ip_geolocation ||= GetIpGeolocationEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.get_ip_geolocation instead.
+  # Canonical facade: client.GetIpGeolocation.list / client.GetIpGeolocation.load({ "id" => ... })
   def GetIpGeolocation(data = nil)
     require_relative 'entity/get_ip_geolocation_entity'
     GetIpGeolocationEntity.new(self, data)

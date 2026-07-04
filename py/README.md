@@ -36,10 +36,12 @@ client = IpGeolocationSDK({
 
 ### 3. Load a getipgeolocation
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.getipgeolocation.load({"id": "example_id"})
-    print(result)
+    getipgeolocation = client.GetIpGeolocation().load({"id": "example_id"})
+    print(getipgeolocation)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -87,8 +89,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = IpGeolocationSDK.test()
 
-result = client.getipgeolocation.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+getipgeolocation = client.GetIpGeolocation().load({"id": "test01"})
+# getipgeolocation contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -234,7 +237,7 @@ API path: `/`
 
 ### GetIpGeolocation
 
-Create an instance: `const get_ip_geolocation = client.get_ip_geolocation`
+Create an instance: `get_ip_geolocation = client.GetIpGeolocation()`
 
 #### Operations
 
@@ -261,8 +264,8 @@ Create an instance: `const get_ip_geolocation = client.get_ip_geolocation`
 
 #### Example: Load
 
-```ts
-const get_ip_geolocation = await client.get_ip_geolocation.load({ id: 'get_ip_geolocation_id' })
+```python
+get_ip_geolocation = client.GetIpGeolocation().load({"id": "get_ip_geolocation_id"})
 ```
 
 
@@ -336,7 +339,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-getipgeolocation = client.getipgeolocation
+getipgeolocation = client.GetIpGeolocation()
 getipgeolocation.load({"id": "example_id"})
 
 # getipgeolocation.data_get() now returns the loaded getipgeolocation data
