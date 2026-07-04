@@ -110,7 +110,7 @@ Alias for `IpGeolocationSDK.test()`.
 ## GetIpGeolocationEntity
 
 ```ts
-const get_ip_geolocation = client.GetIpGeolocation()
+const get_ip_geolocation = client.get_ip_geolocation
 ```
 
 ### Fields
@@ -137,7 +137,7 @@ const get_ip_geolocation = client.GetIpGeolocation()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.GetIpGeolocation().load({ id: 'get_ip_geolocation_id' })
+const result = await client.get_ip_geolocation.load({ id: 'get_ip_geolocation_id' })
 ```
 
 ### Common Methods

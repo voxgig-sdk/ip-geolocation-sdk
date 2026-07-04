@@ -84,7 +84,7 @@ same parameters as `direct()`.
 ## GetIpGeolocationEntity
 
 ```lua
-local get_ip_geolocation = client:GetIpGeolocation(nil)
+local get_ip_geolocation = client:get_ip_geolocation(nil)
 ```
 
 ### Fields
@@ -111,7 +111,7 @@ local get_ip_geolocation = client:GetIpGeolocation(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:GetIpGeolocation():load({ id = "get_ip_geolocation_id" })
+local result, err = client:get_ip_geolocation():load({ id = "get_ip_geolocation_id" })
 ```
 
 ### Common Methods

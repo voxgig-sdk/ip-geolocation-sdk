@@ -244,6 +244,19 @@ end
 
 
 
+-- Idiomatic facade: client:get_ip_geolocation():list() / client:get_ip_geolocation():load({ id = ... })
+function IpGeolocationSDK:get_ip_geolocation(data)
+  local EntityMod = require("entity.get_ip_geolocation_entity")
+  if data == nil then
+    if self._get_ip_geolocation == nil then
+      self._get_ip_geolocation = EntityMod.new(self, nil)
+    end
+    return self._get_ip_geolocation
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:get_ip_geolocation() instead.
 function IpGeolocationSDK:GetIpGeolocation(data)
   local EntityMod = require("entity.get_ip_geolocation_entity")
   return EntityMod.new(self, data)

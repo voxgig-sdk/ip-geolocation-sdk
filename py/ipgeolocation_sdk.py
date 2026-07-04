@@ -144,16 +144,23 @@ class IpGeolocationSDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class IpGeolocationSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,15 +212,26 @@ class IpGeolocationSDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def get_ip_geolocation(self):
+        """Idiomatic facade: client.get_ip_geolocation.list() / client.get_ip_geolocation.load({"id": ...})."""
+        from entity.get_ip_geolocation_entity import GetIpGeolocationEntity
+        cached = getattr(self, "_get_ip_geolocation", None)
+        if cached is None:
+            cached = GetIpGeolocationEntity(self, None)
+            self._get_ip_geolocation = cached
+        return cached
 
     def GetIpGeolocation(self, data=None):
+        # Deprecated: use client.get_ip_geolocation instead.
         from entity.get_ip_geolocation_entity import GetIpGeolocationEntity
         return GetIpGeolocationEntity(self, data)
 

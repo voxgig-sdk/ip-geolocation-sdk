@@ -2,6 +2,8 @@
 
 import { GetIpGeolocationEntity } from './entity/GetIpGeolocationEntity'
 
+export type * from './IpGeolocationTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -202,6 +204,14 @@ class IpGeolocationSDK {
 
 
 
+  _get_ip_geolocation?: GetIpGeolocationEntity
+
+  // Idiomatic facade: `client.get_ip_geolocation.list()` / `client.get_ip_geolocation.load({ id })`.
+  get get_ip_geolocation(): GetIpGeolocationEntity {
+    return (this._get_ip_geolocation ??= new GetIpGeolocationEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.get_ip_geolocation` instead. */
   GetIpGeolocation(data?: any) {
     const self = this
     return new GetIpGeolocationEntity(self,data)

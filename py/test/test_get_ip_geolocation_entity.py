@@ -49,8 +49,7 @@ class TestGetIpGeolocationEntity:
         # LOAD
         get_ip_geolocation_ref01_ent = client.GetIpGeolocation(None)
         get_ip_geolocation_ref01_match_dt0 = {}
-        get_ip_geolocation_ref01_data_dt0_loaded, err = get_ip_geolocation_ref01_ent.load(get_ip_geolocation_ref01_match_dt0, None)
-        assert err is None
+        get_ip_geolocation_ref01_data_dt0_loaded = get_ip_geolocation_ref01_ent.load(get_ip_geolocation_ref01_match_dt0, None)
         assert get_ip_geolocation_ref01_data_dt0_loaded is not None
 
 

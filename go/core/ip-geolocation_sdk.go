@@ -245,6 +245,9 @@ func (sdk *IpGeolocationSDK) Direct(fetchargs map[string]any) (map[string]any, e
 }
 
 
+// GetIpGeolocation returns a GetIpGeolocation entity bound to this client.
+// Idiomatic usage: client.GetIpGeolocation(nil).List(nil, nil) or
+// client.GetIpGeolocation(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *IpGeolocationSDK) GetIpGeolocation(data map[string]any) IpGeolocationEntity {
 	return NewGetIpGeolocationEntityFunc(sdk, data)
 }

@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  GetIpGeolocation,
+  GetIpGeolocationLoadMatch,
+} from '../IpGeolocationTypes'
 
 // TODO: needs Entity superclass
-class GetIpGeolocationEntity extends IpGeolocationEntityBase {
+class GetIpGeolocationEntity extends IpGeolocationEntityBase<GetIpGeolocation> {
 
   constructor(client: IpGeolocationSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class GetIpGeolocationEntity extends IpGeolocationEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: GetIpGeolocationLoadMatch, ctrl?: Control): Promise<GetIpGeolocation> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class GetIpGeolocationEntity extends IpGeolocationEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<GetIpGeolocation> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

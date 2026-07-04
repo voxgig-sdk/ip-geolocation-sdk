@@ -9,12 +9,9 @@ The Lua SDK for the IpGeolocation API — an entity-oriented client using Lua co
 
 
 ## Install
-```bash
-luarocks install voxgig-sdk-ip-geolocation
-```
-
-If the module is not yet published, add the source directory to
-your `LUA_PATH`:
+This package is not yet published to LuaRocks. Install it from the
+GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/ip-geolocation-sdk/releases)),
+or add the source directory to your `LUA_PATH`:
 
 ```bash
 export LUA_PATH="path/to/lua/?.lua;path/to/lua/?/init.lua;;"
@@ -32,14 +29,14 @@ loading a specific record.
 local sdk = require("ip-geolocation_sdk")
 
 local client = sdk.new({
-  apikey = os.getenv("IP-GEOLOCATION_APIKEY"),
+  apikey = os.getenv("IP_GEOLOCATION_APIKEY"),
 })
 ```
 
 ### 3. Load a getipgeolocation
 
 ```lua
-local result, err = client:GetIpGeolocation():load({ id = "example_id" })
+local result, err = client:getipgeolocation():load({ id = "example_id" })
 if err then error(err) end
 print(result)
 ```
@@ -87,7 +84,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:IpGeolocation():load({ id = "test01" })
+local result, err = client:getipgeolocation():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -120,8 +117,8 @@ local client = sdk.new({
 Create a `.env.local` file at the project root:
 
 ```
-IP-GEOLOCATION_TEST_LIVE=TRUE
-IP-GEOLOCATION_APIKEY=<your-key>
+IP_GEOLOCATION_TEST_LIVE=TRUE
+IP_GEOLOCATION_APIKEY=<your-key>
 ```
 
 Then run:
@@ -232,7 +229,7 @@ API path: `/`
 
 ### GetIpGeolocation
 
-Create an instance: `const get_ip_geolocation = client.GetIpGeolocation()`
+Create an instance: `const get_ip_geolocation = client.get_ip_geolocation`
 
 #### Operations
 
@@ -260,7 +257,7 @@ Create an instance: `const get_ip_geolocation = client.GetIpGeolocation()`
 #### Example: Load
 
 ```ts
-const get_ip_geolocation = await client.GetIpGeolocation().load({ id: 'get_ip_geolocation_id' })
+const get_ip_geolocation = await client.get_ip_geolocation.load({ id: 'get_ip_geolocation_id' })
 ```
 
 
@@ -335,11 +332,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moon = client:Moon(nil)
-moon:load({ planet_id = "earth", id = "luna" }, nil)
+local getipgeolocation = client:getipgeolocation()
+getipgeolocation:load({ id = "example_id" })
 
--- moon:data_get() now returns the loaded moon data
--- moon:match_get() returns the last match criteria
+-- getipgeolocation:data_get() now returns the loaded getipgeolocation data
+-- getipgeolocation:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration
