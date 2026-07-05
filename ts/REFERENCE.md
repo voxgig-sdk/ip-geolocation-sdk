@@ -117,18 +117,18 @@ const get_ip_geolocation = client.GetIpGeolocation()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `as` | ``$STRING`` | No |  |
-| `asn` | ``$STRING`` | No |  |
-| `city_name` | ``$STRING`` | No |  |
-| `country_code` | ``$STRING`` | No |  |
-| `country_name` | ``$STRING`` | No |  |
-| `ip` | ``$STRING`` | No |  |
-| `is_proxy` | ``$BOOLEAN`` | No |  |
-| `latitude` | ``$NUMBER`` | No |  |
-| `longitude` | ``$NUMBER`` | No |  |
-| `region_name` | ``$STRING`` | No |  |
-| `time_zone` | ``$STRING`` | No |  |
-| `zip_code` | ``$STRING`` | No |  |
+| `as` | `string` | No |  |
+| `asn` | `string` | No |  |
+| `city_name` | `string` | No |  |
+| `country_code` | `string` | No |  |
+| `country_name` | `string` | No |  |
+| `ip` | `string` | No |  |
+| `is_proxy` | `boolean` | No |  |
+| `latitude` | `number` | No |  |
+| `longitude` | `number` | No |  |
+| `region_name` | `string` | No |  |
+| `time_zone` | `string` | No |  |
+| `zip_code` | `string` | No |  |
 
 ### Operations
 
@@ -137,7 +137,7 @@ const get_ip_geolocation = client.GetIpGeolocation()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.GetIpGeolocation().load({ id: 'get_ip_geolocation_id' })
+const result = await client.GetIpGeolocation().load()
 ```
 
 ### Common Methods

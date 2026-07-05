@@ -221,7 +221,7 @@ class IpGeolocationSDK:
 
 
     def GetIpGeolocation(self, data=None) -> "GetIpGeolocationEntity":
-        """Entity factory: client.GetIpGeolocation().list({}) / client.GetIpGeolocation().load({"id": ...})."""
+        """Entity factory: client.GetIpGeolocation().list() / client.GetIpGeolocation().load({"id": ...})."""
         from entity.get_ip_geolocation_entity import GetIpGeolocationEntity
         return GetIpGeolocationEntity(self, data)
 

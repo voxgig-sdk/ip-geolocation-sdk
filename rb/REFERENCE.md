@@ -8,7 +8,7 @@ Complete API reference for the IpGeolocation Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'ip-geolocation_sdk'
+require_relative 'IpGeolocation_sdk'
 
 client = IpGeolocationSDK.new(options)
 ```
@@ -94,18 +94,18 @@ get_ip_geolocation = client.GetIpGeolocation
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `as` | ``$STRING`` | No |  |
-| `asn` | ``$STRING`` | No |  |
-| `city_name` | ``$STRING`` | No |  |
-| `country_code` | ``$STRING`` | No |  |
-| `country_name` | ``$STRING`` | No |  |
-| `ip` | ``$STRING`` | No |  |
-| `is_proxy` | ``$BOOLEAN`` | No |  |
-| `latitude` | ``$NUMBER`` | No |  |
-| `longitude` | ``$NUMBER`` | No |  |
-| `region_name` | ``$STRING`` | No |  |
-| `time_zone` | ``$STRING`` | No |  |
-| `zip_code` | ``$STRING`` | No |  |
+| `as` | `String` | No |  |
+| `asn` | `String` | No |  |
+| `city_name` | `String` | No |  |
+| `country_code` | `String` | No |  |
+| `country_name` | `String` | No |  |
+| `ip` | `String` | No |  |
+| `is_proxy` | `Boolean` | No |  |
+| `latitude` | `Float` | No |  |
+| `longitude` | `Float` | No |  |
+| `region_name` | `String` | No |  |
+| `time_zone` | `String` | No |  |
+| `zip_code` | `String` | No |  |
 
 ### Operations
 
@@ -114,7 +114,7 @@ get_ip_geolocation = client.GetIpGeolocation
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.GetIpGeolocation.load({ "id" => "get_ip_geolocation_id" })
+result = client.GetIpGeolocation.load()
 ```
 
 ### Common Methods

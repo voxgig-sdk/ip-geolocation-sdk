@@ -24,8 +24,7 @@ type GetIpGeolocation struct {
 	ZipCode *string `json:"zip_code,omitempty"`
 }
 
-// GetIpGeolocationLoadMatch mirrors the get_ip_geolocation fields as an all-optional match
-// filter (Go analog of Partial<GetIpGeolocation>).
+// GetIpGeolocationLoadMatch is the typed request payload for GetIpGeolocation.LoadTyped.
 type GetIpGeolocationLoadMatch struct {
 	As *string `json:"as,omitempty"`
 	Asn *string `json:"asn,omitempty"`

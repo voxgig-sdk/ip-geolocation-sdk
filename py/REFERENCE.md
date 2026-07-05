@@ -8,7 +8,7 @@ Complete API reference for the IpGeolocation Python SDK.
 ### Constructor
 
 ```python
-from ip-geolocation_sdk import IpGeolocationSDK
+from ipgeolocation_sdk import IpGeolocationSDK
 
 client = IpGeolocationSDK(options)
 ```
@@ -88,18 +88,18 @@ get_ip_geolocation = client.GetIpGeolocation()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `as` | ``$STRING`` | No |  |
-| `asn` | ``$STRING`` | No |  |
-| `city_name` | ``$STRING`` | No |  |
-| `country_code` | ``$STRING`` | No |  |
-| `country_name` | ``$STRING`` | No |  |
-| `ip` | ``$STRING`` | No |  |
-| `is_proxy` | ``$BOOLEAN`` | No |  |
-| `latitude` | ``$NUMBER`` | No |  |
-| `longitude` | ``$NUMBER`` | No |  |
-| `region_name` | ``$STRING`` | No |  |
-| `time_zone` | ``$STRING`` | No |  |
-| `zip_code` | ``$STRING`` | No |  |
+| `as` | `str` | No |  |
+| `asn` | `str` | No |  |
+| `city_name` | `str` | No |  |
+| `country_code` | `str` | No |  |
+| `country_name` | `str` | No |  |
+| `ip` | `str` | No |  |
+| `is_proxy` | `bool` | No |  |
+| `latitude` | `float` | No |  |
+| `longitude` | `float` | No |  |
+| `region_name` | `str` | No |  |
+| `time_zone` | `str` | No |  |
+| `zip_code` | `str` | No |  |
 
 ### Operations
 
@@ -108,7 +108,7 @@ get_ip_geolocation = client.GetIpGeolocation()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.GetIpGeolocation().load({"id": "get_ip_geolocation_id"})
+result = client.GetIpGeolocation().load()
 ```
 
 ### Common Methods

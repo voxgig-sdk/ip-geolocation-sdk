@@ -29,7 +29,7 @@ class GetIpGeolocation
     public ?string $zip_code = null;
 }
 
-/** Match filter for GetIpGeolocation#load (any subset of GetIpGeolocation fields). */
+/** Request payload for GetIpGeolocation#load. */
 class GetIpGeolocationLoadMatch
 {
     public ?string $as = null;

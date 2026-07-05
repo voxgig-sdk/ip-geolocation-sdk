@@ -98,18 +98,18 @@ get_ip_geolocation := client.GetIpGeolocation(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `as` | ``$STRING`` | No |  |
-| `asn` | ``$STRING`` | No |  |
-| `city_name` | ``$STRING`` | No |  |
-| `country_code` | ``$STRING`` | No |  |
-| `country_name` | ``$STRING`` | No |  |
-| `ip` | ``$STRING`` | No |  |
-| `is_proxy` | ``$BOOLEAN`` | No |  |
-| `latitude` | ``$NUMBER`` | No |  |
-| `longitude` | ``$NUMBER`` | No |  |
-| `region_name` | ``$STRING`` | No |  |
-| `time_zone` | ``$STRING`` | No |  |
-| `zip_code` | ``$STRING`` | No |  |
+| `as` | `string` | No |  |
+| `asn` | `string` | No |  |
+| `city_name` | `string` | No |  |
+| `country_code` | `string` | No |  |
+| `country_name` | `string` | No |  |
+| `ip` | `string` | No |  |
+| `is_proxy` | `bool` | No |  |
+| `latitude` | `float64` | No |  |
+| `longitude` | `float64` | No |  |
+| `region_name` | `string` | No |  |
+| `time_zone` | `string` | No |  |
+| `zip_code` | `string` | No |  |
 
 ### Operations
 
@@ -118,7 +118,7 @@ get_ip_geolocation := client.GetIpGeolocation(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.GetIpGeolocation(nil).Load(map[string]any{"id": "get_ip_geolocation_id"}, nil)
+result, err := client.GetIpGeolocation(nil).Load(nil, nil)
 ```
 
 ### Common Methods

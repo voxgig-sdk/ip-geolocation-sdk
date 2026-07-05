@@ -21,6 +21,18 @@
 ---@field zip_code? string
 
 ---@class GetIpGeolocationLoadMatch
+---@field as? string
+---@field asn? string
+---@field city_name? string
+---@field country_code? string
+---@field country_name? string
+---@field ip? string
+---@field is_proxy? boolean
+---@field latitude? number
+---@field longitude? number
+---@field region_name? string
+---@field time_zone? string
+---@field zip_code? string
 
 local M = {}
 

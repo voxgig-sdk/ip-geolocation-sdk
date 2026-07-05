@@ -61,7 +61,7 @@ GetIpGeolocation = Struct.new(
   keyword_init: true
 )
 
-# Match filter for GetIpGeolocation#load (any subset of GetIpGeolocation fields).
+# Request payload for GetIpGeolocation#load.
 #
 # @!attribute [rw] as
 #   @return [String, nil]

@@ -8,7 +8,7 @@ Complete API reference for the IpGeolocation PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/ip-geolocation_sdk.php';
+require_once __DIR__ . '/ipgeolocation_sdk.php';
 
 $client = new IpGeolocationSDK($options);
 ```
@@ -46,11 +46,11 @@ $client = IpGeolocationSDK::test();
 
 Create a new `GetIpGeolocationEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): IpGeolocationUtility`
 
 Return a copy of the SDK utility object.
 
@@ -93,18 +93,18 @@ $get_ip_geolocation = $client->GetIpGeolocation();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `as` | ``$STRING`` | No |  |
-| `asn` | ``$STRING`` | No |  |
-| `city_name` | ``$STRING`` | No |  |
-| `country_code` | ``$STRING`` | No |  |
-| `country_name` | ``$STRING`` | No |  |
-| `ip` | ``$STRING`` | No |  |
-| `is_proxy` | ``$BOOLEAN`` | No |  |
-| `latitude` | ``$NUMBER`` | No |  |
-| `longitude` | ``$NUMBER`` | No |  |
-| `region_name` | ``$STRING`` | No |  |
-| `time_zone` | ``$STRING`` | No |  |
-| `zip_code` | ``$STRING`` | No |  |
+| `as` | `string` | No |  |
+| `asn` | `string` | No |  |
+| `city_name` | `string` | No |  |
+| `country_code` | `string` | No |  |
+| `country_name` | `string` | No |  |
+| `ip` | `string` | No |  |
+| `is_proxy` | `bool` | No |  |
+| `latitude` | `float` | No |  |
+| `longitude` | `float` | No |  |
+| `region_name` | `string` | No |  |
+| `time_zone` | `string` | No |  |
+| `zip_code` | `string` | No |  |
 
 ### Operations
 
@@ -113,24 +113,24 @@ $get_ip_geolocation = $client->GetIpGeolocation();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->GetIpGeolocation()->load(["id" => "get_ip_geolocation_id"]);
+$result = $client->GetIpGeolocation()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -139,7 +139,7 @@ Set the entity match criteria.
 Create a new `GetIpGeolocationEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
