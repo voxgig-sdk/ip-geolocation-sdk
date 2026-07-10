@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -302,15 +299,25 @@
           "url": "https://www.ip2location.io"
         },
         "description": "The IP2Location API provides a RESTful interface for determining the geographical location of users based on their IP addresses in real time. It supports both IPv4 and IPv6 lookups, returning detailed information such as country, city, and coordinates without requiring an API key for up to 500 queries daily.",
+        "meta_source": "https://www.freepublicapis.com",
+        "security": {
+          "in": "query",
+          "name": "key",
+          "prefix": "",
+          "scheme": "ApiKeyAuth",
+          "type": "apiKey"
+        },
         "servers": [
           {
             "description": "Production server",
             "url": "https://api.ip2location.io"
           }
         ],
+        "summary": "The IP2Location API provides a RESTful interface for determining the geographical location of users based on their IP addresses in real time.",
         "termsOfService": "https://www.ip2location.io",
         "title": "IP Geolocation API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://ip2location.io"
       },
       "option": {},
       "target": {
@@ -363,6 +370,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -413,6 +423,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

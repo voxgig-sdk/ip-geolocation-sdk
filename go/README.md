@@ -53,12 +53,12 @@ func main() {
         "apikey": os.Getenv("IP_GEOLOCATION_APIKEY"),
     })
 
-    // Load a single getipgeolocation — the value is the loaded record.
-    getipgeolocation, err := client.GetIpGeolocation(nil).Load(nil, nil)
+    // Load a single getIpGeolocation — the value is the loaded record.
+    getIpGeolocation, err := client.GetIpGeolocation(nil).Load(nil, nil)
     if err != nil {
         panic(err)
     }
-    fmt.Println(getipgeolocation)
+    fmt.Println(getIpGeolocation)
 }
 ```
 
@@ -138,13 +138,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-getipgeolocation, err := client.GetIpGeolocation(nil).Load(
+getIpGeolocation, err := client.GetIpGeolocation(nil).Load(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(getipgeolocation) // the returned mock data
+fmt.Println(getIpGeolocation) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -250,9 +250,9 @@ Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    getipgeolocation, err := client.GetIpGeolocation(nil).Load(nil, nil)
+    getIpGeolocation, err := client.GetIpGeolocation(nil).Load(nil, nil)
     if err != nil { /* handle */ }
-    // getipgeolocation is the returned record
+    // getIpGeolocation is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -287,7 +287,7 @@ API path: `/`
 
 ### GetIpGeolocation
 
-Create an instance: `get_ip_geolocation := client.GetIpGeolocation(nil)`
+Create an instance: `getIpGeolocation := client.GetIpGeolocation(nil)`
 
 #### Operations
 
@@ -315,11 +315,11 @@ Create an instance: `get_ip_geolocation := client.GetIpGeolocation(nil)`
 #### Example: Load
 
 ```go
-get_ip_geolocation, err := client.GetIpGeolocation(nil).Load(nil, nil)
+getIpGeolocation, err := client.GetIpGeolocation(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(get_ip_geolocation) // the loaded record
+fmt.Println(getIpGeolocation) // the loaded record
 ```
 
 

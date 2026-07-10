@@ -39,7 +39,7 @@ class Config {
     base: 'https://api.ip2location.io',
 
     auth: {
-      prefix: 'Bearer',
+      prefix: '',
     },
 
     headers: {

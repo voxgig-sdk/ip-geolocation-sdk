@@ -91,7 +91,8 @@ same parameters as `Direct()`.
 ## GetIpGeolocationEntity
 
 ```go
-get_ip_geolocation := client.GetIpGeolocation(nil)
+getIpGeolocation := client.GetIpGeolocation(nil)
+fmt.Println(getIpGeolocation.GetName()) // "get_ip_geolocation"
 ```
 
 ### Fields
@@ -119,6 +120,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.GetIpGeolocation(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
