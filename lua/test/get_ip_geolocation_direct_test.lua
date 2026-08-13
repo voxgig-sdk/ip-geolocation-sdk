@@ -60,16 +60,16 @@ function get_ip_geolocation_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["IPGEOLOCATION_TEST_GET_IP_GEOLOCATION_ENTID"] = {},
-    ["IPGEOLOCATION_TEST_LIVE"] = "FALSE",
-    ["IPGEOLOCATION_APIKEY"] = "NONE",
+    ["IP_GEOLOCATION_TEST_GET_IP_GEOLOCATION_ENTID"] = {},
+    ["IP_GEOLOCATION_TEST_LIVE"] = "FALSE",
+    ["IP_GEOLOCATION_APIKEY"] = "NONE",
   })
 
-  local live = env["IPGEOLOCATION_TEST_LIVE"] == "TRUE"
+  local live = env["IP_GEOLOCATION_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["IPGEOLOCATION_APIKEY"],
+      apikey = env["IP_GEOLOCATION_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

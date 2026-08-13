@@ -19,11 +19,15 @@ import {
 describe('GetIpGeolocationDirect', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when IPGEOLOCATION_TEST_LIVE=TRUE.
-  afterEach(liveDelay('IPGEOLOCATION_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when IP_GEOLOCATION_TEST_LIVE=TRUE.
+  afterEach(liveDelay('IP_GEOLOCATION_TEST_LIVE'))
 
   test('direct-exists', async () => {
     const sdk = new IpGeolocationSDK({
+      // Concrete base: a live construction must satisfy any server
+      // variables a templated base URL declares; overriding base with a
+      // literal (as the direct flow tests do) sidesteps the requirement.
+      base: 'http://localhost:8080',
       system: { fetch: async () => ({}) }
     })
     assert('function' === typeof sdk.direct)
@@ -72,19 +76,19 @@ function directSetup(mockres?: any) {
   const calls: any[] = []
 
   const env = envOverride({
-    'IPGEOLOCATION_TEST_GET_IP_GEOLOCATION_ENTID': {},
-    'IPGEOLOCATION_TEST_LIVE': 'FALSE',
-    'IPGEOLOCATION_APIKEY': 'NONE',
+    'IP_GEOLOCATION_TEST_GET_IP_GEOLOCATION_ENTID': {},
+    'IP_GEOLOCATION_TEST_LIVE': 'FALSE',
+    'IP_GEOLOCATION_APIKEY': 'NONE',
   })
 
-  const live = 'TRUE' === env.IPGEOLOCATION_TEST_LIVE
+  const live = 'TRUE' === env.IP_GEOLOCATION_TEST_LIVE
 
   if (live) {
     const client = new IpGeolocationSDK({
-      apikey: env.IPGEOLOCATION_APIKEY,
+      apikey: env.IP_GEOLOCATION_APIKEY,
     })
 
-    let idmap: any = env['IPGEOLOCATION_TEST_GET_IP_GEOLOCATION_ENTID']
+    let idmap: any = env['IP_GEOLOCATION_TEST_GET_IP_GEOLOCATION_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }

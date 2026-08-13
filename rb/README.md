@@ -36,7 +36,7 @@ client = IpGeolocationSDK.new({
 
 ```ruby
 begin
-  # load returns the bare GetIpGeolocation record (raises on error).
+  # load returns the ENTITY — call data_get for the GetIpGeolocation record (raises on error).
   getipgeolocation = client.GetIpGeolocation.load()
   puts getipgeolocation
 rescue => err
@@ -119,7 +119,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = IpGeolocationSDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 getipgeolocation = client.GetIpGeolocation.load()
 puts getipgeolocation
 ```
@@ -290,7 +291,7 @@ Create an instance: `get_ip_geolocation = client.GetIpGeolocation`
 #### Example: Load
 
 ```ruby
-# load returns the bare GetIpGeolocation record (raises on error).
+# load returns the ENTITY — call data_get for the GetIpGeolocation record (raises on error).
 get_ip_geolocation = client.GetIpGeolocation.load()
 ```
 

@@ -37,7 +37,7 @@ $client = new IpGeolocationSDK([
 
 ```php
 try {
-    // load() returns the bare GetIpGeolocation record (throws on error).
+    // load() returns the ENTITY — call data_get() for the GetIpGeolocation record (throws on error).
     $getipgeolocation = $client->GetIpGeolocation()->load();
     print_r($getipgeolocation);
 } catch (\Throwable $err) {
@@ -125,7 +125,8 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = IpGeolocationSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $getipgeolocation = $client->GetIpGeolocation()->load();
 print_r($getipgeolocation);
 ```
@@ -226,7 +227,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -300,7 +301,7 @@ Create an instance: `$get_ip_geolocation = $client->GetIpGeolocation();`
 #### Example: Load
 
 ```php
-// load() returns the bare GetIpGeolocation record (throws on error).
+// load() returns the ENTITY — call data_get() for the GetIpGeolocation record (throws on error).
 $get_ip_geolocation = $client->GetIpGeolocation()->load();
 ```
 

@@ -123,7 +123,8 @@ Create a mock client for unit testing — no server required:
 const client = IpGeolocationSDK.test()
 
 const getipgeolocation = await client.GetIpGeolocation().load()
-// getipgeolocation is a bare entity populated with mock response data
+// getipgeolocation is the entity, populated with mock response data
+// — call getipgeolocation.data() for the record itself
 console.log(getipgeolocation)
 ```
 

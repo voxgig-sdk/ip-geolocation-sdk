@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ IpGeolocationUtility::setRegistrar(function (IpGeolocationUtility $u): void {
     $u->prepare_params = [IpGeolocationPrepareParams::class, 'call'];
     $u->prepare_path = [IpGeolocationPreparePath::class, 'call'];
     $u->prepare_query = [IpGeolocationPrepareQuery::class, 'call'];
+    $u->graphql_body = [IpGeolocationGraphql::class, 'body'];
+    $u->graphql_errors = [IpGeolocationGraphql::class, 'errors'];
     $u->result_basic = [IpGeolocationResultBasic::class, 'call'];
     $u->result_body = [IpGeolocationResultBody::class, 'call'];
     $u->result_headers = [IpGeolocationResultHeaders::class, 'call'];

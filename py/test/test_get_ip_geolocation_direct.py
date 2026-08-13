@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from ipgeolocation_sdk.utility.voxgig_struct import voxgig_struct as vs
 from ipgeolocation_sdk import IpGeolocationSDK
-from core import helpers
+from ipgeolocation_sdk.core import helpers
 from test import runner
 
 
@@ -56,16 +56,16 @@ def _get_ip_geolocation_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "IPGEOLOCATION_TEST_GET_IP_GEOLOCATION_ENTID": {},
-        "IPGEOLOCATION_TEST_LIVE": "FALSE",
-        "IPGEOLOCATION_APIKEY": "NONE",
+        "IP_GEOLOCATION_TEST_GET_IP_GEOLOCATION_ENTID": {},
+        "IP_GEOLOCATION_TEST_LIVE": "FALSE",
+        "IP_GEOLOCATION_APIKEY": "NONE",
     })
 
-    live = env.get("IPGEOLOCATION_TEST_LIVE") == "TRUE"
+    live = env.get("IP_GEOLOCATION_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("IPGEOLOCATION_APIKEY"),
+            "apikey": env.get("IP_GEOLOCATION_APIKEY"),
         }
         client = IpGeolocationSDK(merged_opts)
         return {

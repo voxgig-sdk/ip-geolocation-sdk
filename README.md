@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = IpGeolocationSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = IpGeolocationSDK.test({
+  entity: {
+    get_ip_geolocation: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const getipgeolocation = await client.GetIpGeolocation().load()
-// getipgeolocation is a bare GetIpGeolocation populated with mock data
+// getipgeolocation is the GetIpGeolocation entity, populated with mock data
+// — call getipgeolocation.data() for the record itself
 console.log(getipgeolocation)
 ```
 
@@ -189,7 +198,7 @@ $client = new IpGeolocationSDK([
 ]);
 
 
-// Load a specific getipgeolocation (returns the bare record; throws on error)
+// Load a specific getipgeolocation (returns the ENTITY; call data_get() for the record; throws on error)
 $getipgeolocation = $client->GetIpGeolocation()->load();
 print_r($getipgeolocation);
 ```
@@ -221,7 +230,7 @@ client = IpGeolocationSDK.new({
 })
 
 
-# Load a specific getipgeolocation (returns the bare record; raises on error)
+# Load a specific getipgeolocation (returns the ENTITY; call data_get for the record)
 getipgeolocation = client.GetIpGeolocation.load()
 puts getipgeolocation
 ```
@@ -357,6 +366,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://www.ip2location.io](https://www.ip2location.io)
 

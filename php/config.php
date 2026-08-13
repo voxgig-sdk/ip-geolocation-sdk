@@ -164,6 +164,7 @@ class IpGeolocationConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/',
                   'parts' => [],
