@@ -28,7 +28,7 @@ class IpGeolocationSDK
     utility = IpGeolocationUtility.new
     @_utility = utility
 
-    config = IpGeolocationConfig.make_config
+    config = IpGeolocationConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

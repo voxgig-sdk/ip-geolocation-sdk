@@ -15,7 +15,7 @@ require_relative "../IpGeolocation_sdk"
 module IpGeolocationFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = IpGeolocationConfig.make_config["feature"]
+    f = IpGeolocationConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 
