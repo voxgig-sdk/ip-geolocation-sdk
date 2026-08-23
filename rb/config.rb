@@ -19,6 +19,9 @@ module IpGeolocationConfig
     {
       "main" => {
         "name" => "IpGeolocation",
+        "slug" => "ip-geolocation",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {

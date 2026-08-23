@@ -33,6 +33,9 @@ class IpGeolocationConfig
         return [
             "main" => [
                 "name" => "IpGeolocation",
+                "slug" => "ip-geolocation",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [
