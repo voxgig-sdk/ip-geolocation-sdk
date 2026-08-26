@@ -28,6 +28,7 @@ module IpGeolocationConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
