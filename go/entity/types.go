@@ -30,18 +30,10 @@ type GetIpGeolocation struct {
 
 // GetIpGeolocationLoadMatch is the typed request payload for GetIpGeolocation.LoadTyped.
 type GetIpGeolocationLoadMatch struct {
-	As *string `json:"as,omitempty"`
-	Asn *string `json:"asn,omitempty"`
-	CityName *string `json:"city_name,omitempty"`
-	CountryCode *string `json:"country_code,omitempty"`
-	CountryName *string `json:"country_name,omitempty"`
+	Format *string `json:"format,omitempty"`
 	Ip *string `json:"ip,omitempty"`
-	IsProxy *bool `json:"is_proxy,omitempty"`
-	Latitude *float64 `json:"latitude,omitempty"`
-	Longitude *float64 `json:"longitude,omitempty"`
-	RegionName *string `json:"region_name,omitempty"`
-	TimeZone *string `json:"time_zone,omitempty"`
-	ZipCode *string `json:"zip_code,omitempty"`
+	Key *string `json:"key,omitempty"`
+	Lang *string `json:"lang,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

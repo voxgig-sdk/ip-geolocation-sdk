@@ -31,14 +31,7 @@ class GetIpGeolocation(TypedDict, total=False):
 
 
 class GetIpGeolocationLoadMatch(TypedDict, total=False):
-    asn: str
-    city_name: str
-    country_code: str
-    country_name: str
+    format: str
     ip: str
-    is_proxy: bool
-    latitude: float
-    longitude: float
-    region_name: str
-    time_zone: str
-    zip_code: str
+    key: str
+    lang: str

@@ -32,17 +32,9 @@ class GetIpGeolocation
 /** Request payload for GetIpGeolocation#load. */
 class GetIpGeolocationLoadMatch
 {
-    public ?string $as = null;
-    public ?string $asn = null;
-    public ?string $city_name = null;
-    public ?string $country_code = null;
-    public ?string $country_name = null;
+    public ?string $format = null;
     public ?string $ip = null;
-    public ?bool $is_proxy = null;
-    public ?float $latitude = null;
-    public ?float $longitude = null;
-    public ?string $region_name = null;
-    public ?string $time_zone = null;
-    public ?string $zip_code = null;
+    public ?string $key = null;
+    public ?string $lang = null;
 }
 

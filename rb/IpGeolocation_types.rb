@@ -63,54 +63,22 @@ GetIpGeolocation = Struct.new(
 
 # Request payload for GetIpGeolocation#load.
 #
-# @!attribute [rw] as
-#   @return [String, nil]
-#
-# @!attribute [rw] asn
-#   @return [String, nil]
-#
-# @!attribute [rw] city_name
-#   @return [String, nil]
-#
-# @!attribute [rw] country_code
-#   @return [String, nil]
-#
-# @!attribute [rw] country_name
+# @!attribute [rw] format
 #   @return [String, nil]
 #
 # @!attribute [rw] ip
 #   @return [String, nil]
 #
-# @!attribute [rw] is_proxy
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] latitude
-#   @return [Float, nil]
-#
-# @!attribute [rw] longitude
-#   @return [Float, nil]
-#
-# @!attribute [rw] region_name
+# @!attribute [rw] key
 #   @return [String, nil]
 #
-# @!attribute [rw] time_zone
-#   @return [String, nil]
-#
-# @!attribute [rw] zip_code
+# @!attribute [rw] lang
 #   @return [String, nil]
 GetIpGeolocationLoadMatch = Struct.new(
-  :as,
-  :asn,
-  :city_name,
-  :country_code,
-  :country_name,
+  :format,
   :ip,
-  :is_proxy,
-  :latitude,
-  :longitude,
-  :region_name,
-  :time_zone,
-  :zip_code,
+  :key,
+  :lang,
   keyword_init: true
 )
 
