@@ -90,7 +90,7 @@ def _get_ip_geolocation_basic_setup(extra):
         "IP_GEOLOCATION_TEST_GET_IP_GEOLOCATION_ENTID": idmap,
         "IP_GEOLOCATION_TEST_LIVE": "FALSE",
         "IP_GEOLOCATION_TEST_EXPLAIN": "FALSE",
-        "IP_GEOLOCATION_APIKEY": "NONE",
+        "IP_GEOLOCATION_APIKEY": "",
     })
 
     idmap_resolved = helpers.to_map(
@@ -100,6 +100,10 @@ def _get_ip_geolocation_basic_setup(extra):
 
     if env.get("IP_GEOLOCATION_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
+            # FIRST, so the generated fields below win: sdk-test-control.json's
+            # test.client.options adds to the live client, it does not
+            # redirect it.
+            runner.live_client_options(),
             {
                 "apikey": env.get("IP_GEOLOCATION_APIKEY"),
             },

@@ -67,15 +67,17 @@ function get_ip_geolocation_direct_setup($mockres)
     $env = Runner::env_override([
         "IP_GEOLOCATION_TEST_GET_IP_GEOLOCATION_ENTID" => [],
         "IP_GEOLOCATION_TEST_LIVE" => "FALSE",
-        "IP_GEOLOCATION_APIKEY" => "NONE",
+        "IP_GEOLOCATION_APIKEY" => "",
     ]);
 
     $live = $env["IP_GEOLOCATION_TEST_LIVE"] === "TRUE";
 
     if ($live) {
-        $merged_opts = [
+        // Merged so the generated fields win: sdk-test-control.json's
+        // test.client.options adds to the live client, it does not redirect it.
+        $merged_opts = array_merge(Runner::live_client_options(), [
             "apikey" => $env["IP_GEOLOCATION_APIKEY"],
-        ];
+        ]);
         $client = new IpGeolocationSDK($merged_opts);
         return [
             "client" => $client,

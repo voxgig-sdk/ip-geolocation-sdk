@@ -100,14 +100,22 @@ func get_ip_geolocationDirectSetup(mockres any) *get_ip_geolocationDirectSetupRe
 	env := envOverride(map[string]any{
 		"IP_GEOLOCATION_TEST_GET_IP_GEOLOCATION_ENTID": map[string]any{},
 		"IP_GEOLOCATION_TEST_LIVE":    "FALSE",
-		"IP_GEOLOCATION_APIKEY":       "NONE",
+		"IP_GEOLOCATION_APIKEY":       "",
 	})
 
 	live := env["IP_GEOLOCATION_TEST_LIVE"] == "TRUE"
 
 	if live {
-		mergedOpts := map[string]any{
+		// sdk-test-control.json's test.client.options seeds the live
+		// client; the generated fields below overwrite anything they name.
+		mergedOpts := map[string]any{}
+		for k, v := range liveClientOptions() {
+			mergedOpts[k] = v
+		}
+		for k, v := range map[string]any{
 			"apikey": env["IP_GEOLOCATION_APIKEY"],
+		} {
+			mergedOpts[k] = v
 		}
 		client := sdk.NewIpGeolocationSDK(mergedOpts)
 
