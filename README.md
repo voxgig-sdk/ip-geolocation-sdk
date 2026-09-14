@@ -105,7 +105,7 @@ local result, err = client:GetIpGeolocation():load()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/ip-geolocation` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ip-geolocation-sdk/releases) |
+| TypeScript | `@voxgig-sdk/ip-geolocation-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ip-geolocation-sdk/releases) |
 | Python | `voxgig-sdk-ip-geolocation` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ip-geolocation-sdk/releases) |
 | PHP | `voxgig-sdk/ip-geolocation` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ip-geolocation-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/ip-geolocation-sdk/go` | `go get github.com/voxgig-sdk/ip-geolocation-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:GetIpGeolocation():load()
 ### TypeScript
 
 ```ts
-import { IpGeolocationSDK } from '@voxgig-sdk/ip-geolocation'
+import { IpGeolocationSDK } from '@voxgig-sdk/ip-geolocation-sdk'
 
 const client = new IpGeolocationSDK({
   apikey: process.env.IP_GEOLOCATION_APIKEY,

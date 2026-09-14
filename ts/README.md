@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { IpGeolocationSDK } from '@voxgig-sdk/ip-geolocation'
+import { IpGeolocationSDK } from '@voxgig-sdk/ip-geolocation-sdk'
 
 const client = new IpGeolocationSDK({
   apikey: process.env.IP_GEOLOCATION_APIKEY,
@@ -429,7 +429,7 @@ ip-geolocation/
 Import the SDK from the package root:
 
 ```ts
-import { IpGeolocationSDK } from '@voxgig-sdk/ip-geolocation'
+import { IpGeolocationSDK } from '@voxgig-sdk/ip-geolocation-sdk'
 ```
 
 ### Entity state
