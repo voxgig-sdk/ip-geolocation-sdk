@@ -103,6 +103,8 @@ class IpGeolocationConfig
                 "base" => "https://api.ip2location.io",
                 "auth" => [
                     "prefix" => "",
+                    "in" => "query",
+                    "name" => "key",
                 ],
                 "headers" => [
           'content-type' => 'application/json',
